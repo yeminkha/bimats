@@ -1,0 +1,79 @@
+---
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<div class="link-box">
+  <a href="/services/it-services">IT Services</a>
+  <a
+    href="/services/it-outsourcing"
+    class:list={{
+      active: currentPath.endsWith("/it-outsourcing"),
+    }}>IT Outsourcing</a
+  >
+    <a
+    href="/services/manage-it-services"
+    class:list={{
+      active: currentPath.endsWith("/manage-it-services"),
+    }}>Manage IT Services</a
+  >
+  <a
+    href="/services/it-infra-management"
+    class:list={{
+      active: currentPath.endsWith("/it-infra-management"),
+    }}>IT Infra Management</a
+  >
+  <a
+    href="/services/it-service-management-and-governance"
+    class:list={{
+      active: currentPath.endsWith("/it-service-management-and-governance"),
+    }}>IT Service Management & Governance</a
+  >
+  <a
+    href="/services/consulting-services"
+    class:list={{
+      active: currentPath.endsWith("/consulting-services"),
+    }}>Consulting Services</a
+  >
+  <a
+    href="/services/professional-services"
+    class:list={{
+      active: currentPath.endsWith("/professional-services"),
+    }}>Professional Services</a
+  >
+  <a
+    href="/services/end-user-it-services"
+    class:list={{
+      active: currentPath.endsWith("/end-user-it-services"),
+    }}>End User IT Services</a
+  >
+  <a
+    href="/services/hardware-software-maintenance"
+    class:list={{
+      active: currentPath.endsWith("/hardware-software-maintenance"),
+    }}>Hardware/Software Maintenance</a
+  >
+  <a
+    href="/services/regional-coverage"
+    class:list={{
+      active: currentPath.endsWith("/regional-coverage"),
+    }}>Regional Coverage</a
+  >
+  <a
+    href="/services/cloud-integrating-service"
+    class:list={{
+      active: currentPath.endsWith("/cloud-integrating-service"),
+    }}>Cloud Integrating Service</a
+  >
+  <a
+    href="/services/cyber-security"
+    class:list={{
+      active: currentPath.endsWith("/cyber-security"),
+    }}>Cyber Security</a
+  >
+  <a
+    href="/services/maintenance-support-services"
+    class:list={{
+      active: currentPath.endsWith("/maintenance-support-services"),
+    }}>Maintenance Support Services</a
+  >
+</div>

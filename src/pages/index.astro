@@ -1,11 +1,132 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
-
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import InnerLayout from "../layouts/InnerLayout.astro";
+import Carousel from "../components/Carousel.astro";
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<InnerLayout>
+  <section class="home" id="home">
+    <div class="container">
+      <div class="slider">
+        <a class="slide slide-1" href="/services/end-user-it-services"> </a>
+        <a class="slide slide-2" href="/services/manage-it-services">
+          <div class="slide-inner">
+            <h1>Manage IT Services</h1>
+            <p>
+              At BIM, we offer a full spectrum of Managed Services with flexible
+              and selective outsourcing options. By providing a range of
+              business ...
+            </p>
+            <button>Read More</button>
+          </div>
+        </a>
+        <a class="slide slide-3" href="/services/professional-services">
+          <div class="slide-inner">
+            <h1>Professional Services</h1>
+            <p>
+              As a specialist in professional IT solutions, BIM offers a host of
+              solution integration services that are flexible, agile, secure and
+              cost effective. ...
+            </p>
+            <button>Read More</button>
+          </div>
+        </a>
+        <a class="slide slide-4" href="/services/cloud-integrating-service">
+          <div class="slide-inner">
+            <h1>Cloud Integrating Service</h1>
+            <p>
+              The cloud. You’ve heard about it, but do you really know what it
+              is, or more importantly, how it can help your business? BIM has
+              all the ......
+            </p>
+            <button>Read More</button>
+          </div>
+        </a>
+        <a class="slide slide-5" href="/services/consulting-services">
+          <div class="slide-inner">
+            <h1>Consulting Services</h1>
+            <p>
+              We offer IT consulting services that will help you improve your IT
+              infrastructure, create a tech-driven digital strategy, and
+              ...........
+            </p>
+            <button>Read More</button>
+          </div>
+        </a>
+        <a class="slide slide-6" href="/services/it-infra-management">
+          <div class="slide-inner">
+            <h1>IT Infra Management</h1>
+            <p>
+              Our Remote Infrastructure Management Service helps you manage your
+              IT Infrastructure effectively with ......
+            </p>
+            <button>Read More</button>
+          </div>
+        </a>
+        <a class="slide slide-7" href="/services/end-user-it-services">
+          <div class="slide-inner">
+            <h1>End User IT Services</h1>
+            <p>
+              End User Help Desk Support Services provide end user with remote
+              assistance for their workstations and .....
+            </p>
+            <button>Read More</button>
+          </div>
+        </a>
+        <a class="slide slide-1"> </a>
+      </div>
+    </div>
+  </section>
+  <section class="services">
+    <div class="container">
+      <div class="card-container">
+        <div class="card">
+          <h3>Hardware/Software Maintenance</h3>
+          <img src="/images/card/hardware.jpg" alt="" />
+          <p>
+            Computer downtime is expensive. Every minute of downtime means
+            losses in productivity and income. We make it easy to coordinate ……
+          </p>
+          <a href="">Learn more</a>
+        </div>
+        <div class="card">
+          <h3>Regional Coverage</h3>
+          <div class="img-container">
+            <img src="/images/card/regional.png" alt="" />
+          </div>
+          <p>
+            BIM literally has the ability to dispatch service technicians
+            anywhere in the country, thereby becoming a single point of
+            reference …..
+          </p>
+          <a href="">Learn more</a>
+        </div>
+        <div class="card">
+          <h3>Cyber Security</h3>
+          <img src="/images/card/cyber.jpg" alt="" />
+          <p>
+            SECURITY for Small and Medium-Sized Business Sixty-one percent of
+            data breaches happen to companies with fewer than 1,000 employees …
+          </p>
+          <a href="">Learn more</a>
+        </div>
+        <div class="card">
+          <h3>Storage Solutions</h3>
+          <img src="/images/card/storage.jpg" alt="" />
+          <p>
+            BIM sets the standard in highly available, scalable, and reliable
+            platforms that protect, manage and retrieve …..
+          </p>
+          <a href="">Learn more</a>
+        </div>
+      </div>
+    </div>
+  </section>
+  <section class="partner">
+    <div class="container">
+      <h1>Our Partners</h1>
+      <hr />
+      <Carousel />
+    </div>
+  </section>
+</InnerLayout>;
+

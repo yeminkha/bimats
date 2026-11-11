@@ -1,0 +1,55 @@
+---
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<div class="link-box">
+  <a href="/solutions/solution">Solutions</a>
+  <a
+    href="/solutions/virtual-desktop-infrastructure"
+    class:list={{
+      active: currentPath.endsWith("/virtual-desktop-infrastructure"),
+    }}>Virtual Desktop Infrastructure</a
+  >
+  <a
+    href="/solutions/voice-over-ip"
+    class:list={{
+      active: currentPath.endsWith("/voice-over-ip"),
+    }}>Voice Over IP</a
+  >
+  <a
+    href="/solutions/video-conferencing"
+    class:list={{
+      active: currentPath.endsWith("/video-conferencing"),
+    }}>Video Conferencing</a
+  >
+  <a
+    href="/solutions/cabling-services"
+    class:list={{
+      active: currentPath.endsWith("/cabling-services"),
+    }}>Cabling Services</a
+  >
+  <a
+    href="/solutions/storage-solutions"
+    class:list={{
+      active: currentPath.endsWith("/storage-solutions"),
+    }}>Storage Solutions</a
+  >
+  <a
+    href="/solutions/collaboration-solutions"
+    class:list={{
+      active: currentPath.endsWith("/collaboration-solutions"),
+    }}>Collaboration Solutions</a
+  >
+  <a
+    href="/solutions/software-licensing"
+    class:list={{
+      active: currentPath.endsWith("/software-licensing"),
+    }}>Software Licensing</a
+  >
+  <a
+    href="/solutions/products"
+    class:list={{
+      active: currentPath.endsWith("/products"),
+    }}>Products</a
+  >
+</div>

@@ -1,0 +1,226 @@
+---
+const currentPath = Astro.url.pathname.replace(/\/$/, "") || "/";
+---
+
+<header>
+  <nav>
+    <div class="quick-contact"><p>Contact Us : (+95) 9 799 476854</p></div>
+    <div class="nav-inner">
+      <a href="/" class="logo"><img src="/images/logo/bim-logo.png" alt="" /></a
+      >
+      <div class="links">
+        <div class="IT-services">
+          <a
+            href="/services/it-services"
+            class:list={{
+              active: currentPath.startsWith("/services/"),
+            }}
+            >IT SERVICES
+          </a>
+          <div class="dropdown1 dropdown">
+            <a
+              href="/services/it-outsourcing"
+              class:list={{
+                active: currentPath.endsWith("/it-outsourcing"),
+              }}>IT Outsourcing</a
+            >
+            <a
+              href="/services/manage-it-services"
+              class:list={{
+                active: currentPath.endsWith("/manage-it-services"),
+              }}>Manage IT Service</a
+            >
+
+            <a
+              href="/services/it-infra-management"
+              class:list={{
+                active: currentPath.endsWith("/it-infra-management"),
+              }}>IT Infra Management</a
+            >
+            <a
+              href="/services/it-service-management-and-governance"
+              class:list={{
+                active: currentPath.endsWith(
+                  "/it-service-management-and-governance",
+                ),
+              }}>IT Service Management & Governance</a
+            >
+            <a
+              href="/services/consulting-services"
+              class:list={{
+                active: currentPath.endsWith("/consulting-services"),
+              }}>Consulting Services</a
+            >
+            <a
+              href="/services/professional-services"
+              class:list={{
+                active: currentPath.endsWith("/professional-services"),
+              }}>Professional Services</a
+            >
+            <a
+              href="/services/end-user-it-services"
+              class:list={{
+                active: currentPath.endsWith("/end-user-it-services"),
+              }}>End User IT Services</a
+            >
+            <a
+              href="/services/hardware-software-maintenance"
+              class:list={{
+                active: currentPath.endsWith("/hardware-software-maintenance"),
+              }}>Hardware/Software Maintenance</a
+            >
+            <a
+              href="/services/regional-coverage"
+              class:list={{
+                active: currentPath.endsWith("/regional-coverage"),
+              }}>Regional Coverage</a
+            >
+            <a
+              href="/services/cloud-integrating-service"
+              class:list={{
+                active: currentPath.endsWith("/cloud-integrating-service"),
+              }}>Cloud Integrating Service</a
+            >
+            <a
+              href="/services/cyber-security"
+              class:list={{
+                active: currentPath.endsWith("/cyber-security"),
+              }}>Cyber Security</a
+            >
+            <a
+              href="/services/maintenance-support-services"
+              class:list={{
+                active: currentPath.endsWith("/maintenance-support-services"),
+              }}>Maintenance Support Services</a
+            >
+          </div>
+        </div>
+
+        <div class="solutions">
+          <a
+            href="/solutions/solution"
+            class:list={{
+              active: currentPath.startsWith("/solutions/"),
+            }}>SOLUTIONS</a
+          >
+          <div class="dropdown2 dropdown">
+            <a
+              href="/solutions/virtual-desktop-infrastructure"
+              class:list={{
+                active: currentPath.endsWith("/virtual-desktop-infrastructure"),
+              }}>Virtual Desktop Infrastructure</a
+            >
+            <a
+              href="/solutions/voice-over-ip"
+              class:list={{
+                active: currentPath.endsWith("/voice-over-ip"),
+              }}>Voice Over IP</a
+            >
+            <a
+              href="/solutions/video-conferencing"
+              class:list={{
+                active: currentPath.endsWith("/video-conferencing"),
+              }}>Video Conferencing</a
+            >
+            <a
+              href="/solutions/cabling-services"
+              class:list={{
+                active: currentPath.endsWith("/cabling-services"),
+              }}>Cabling Services</a
+            >
+            <a
+              href="/solutions/storage-solutions"
+              class:list={{
+                active: currentPath.endsWith("/storage-solutions"),
+              }}>Storage Solutions</a
+            >
+            <a
+              href="/solutions/collaboration-solutions"
+              class:list={{
+                active: currentPath.endsWith("/collaboration-solutions"),
+              }}>Collaboration Solutions</a
+            >
+            <a
+              href="/solutions/software-licensing"
+              class:list={{
+                active: currentPath.endsWith("/software-licensing"),
+              }}>Software Licensing</a
+            >
+            <a
+              href="/solutions/products"
+              class:list={{
+                active: currentPath.endsWith("/products"),
+              }}>Products</a
+            >
+          </div>
+        </div>
+        <a
+          href="/partners/partner"
+          class:list={{
+            active: currentPath.startsWith("/partners/"),
+          }}>PARTNERS</a
+        >
+        <div class="about-us">
+          <a href="/about">ABOUT US</a>
+          <div class="dropdown dropdown4">
+            <a href="/about">Who We Are</a><a href="/policy">Policy</a>
+          </div>
+        </div>
+        <a
+          href="/contact"
+          class:list={{
+            active: currentPath.startsWith("/contact/"),
+          }}>CONTACT US</a
+        >
+      </div>
+      <div class="menu">
+        <img src="/images/menu/menu.png" alt="" />
+      </div>
+    </div>
+    <div class="menu-links">
+      <a class="menu1">IT SERVICES</a><a class="menu2">SOLUTIONS</a><a
+        >PARTNERS</a
+      ><a class="menu4">ABOUT US</a><a>CONTACT US</a>
+    </div>
+    <div class="drop1-links drop-links">
+      <a class="menu-back">back</a>
+      <a href="/services/it-outsourcing">IT Outsourcing</a>
+      <a href="/services/manage-it-services">Managed IT Service</a>
+      <a href="/services/it-infra-management">IT Infra Management</a>
+      <a href="/services/it-service-management-and-governance"
+        >IT Service Management and Governance</a
+      >
+      <a href="/services/consulting-services">Consulting Services</a>
+      <a href="/services/professional-services">Professional Services</a>
+      <a href="/services/end-user-it-services">End User IT Services</a>
+      <a href="/services/hardware-software-maintenance"
+        >Hardware/Software Maintenance</a
+      >
+      <a href="/services/regional-coverage">Regional Coverage</a>
+      <a href="/services/cloud-integrating-services"
+        >Cloud Integrating Service</a
+      >
+      <a href="/services/cyber-security">Cyber Security</a>
+      <a href="/services/maintenance-support-services"
+        >Maintenance Support Services</a
+      >
+    </div>
+    <div class="drop2-links drop-links">
+      <a class="menu-back">back</a>
+      <a href="/solutions/virtual-desktop-infrastructure"
+        >Virtual Desktop Infrastructure</a
+      >
+      <a href="/solutions/voice-over-ip">Voice Over IP</a>
+      <a href="/solutions/video-conferencing">Video Conferencing</a>
+      <a href="/solutions/cabling-services">Cabling Services</a>
+      <a href="/solutions/storage-solutions">Storage Solutions</a>
+      <a href="/solutions/collaboration-solutions">Collaboration Solutions</a>
+      <a href="/solutions/software-licensing">Software Licensing</a>
+      <a href="/solutions/products">Products</a>
+    </div>
+    <div class="drop4-links drop-links">
+      <a class="menu-back">back</a>
+      <a href="/about">Who We Are</a><a href="/policy">Policy</a>
+    </div>
+  </nav>
+</header>

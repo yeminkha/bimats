@@ -1,0 +1,36 @@
+---
+import InnerLayout from "../../layouts/InnerLayout.astro";
+import LinkBox from "../../components/SolutionLinkBox.astro";
+import Carousel from "../../components/Carousel.astro";
+---
+
+<InnerLayout>
+  <section class="it-services-all">
+    <div class="container">
+      <LinkBox />
+      <div class="text-container">
+        <h3>PRODUCTS</h3>
+        <h4>
+          Need a knowledge of Licensing Program? Contact a BIM Licensing
+          Specialist Today
+        </h4>
+        <p>
+          BIM delivers outstanding customer service, technical support, advanced
+          testing facilities and a global outlook to meet your needs. BIM offers
+          the blend of technology and personal accountability to deliver product
+          to you just as carefully as you select it. For years, we listened to
+          what our customers told us. The result is our state-of-the-art
+          distribution process designed to configure and place product with
+          precision.Some of the Products we work with HERE …..
+        </p>
+        <Carousel/>
+        <p>
+          <a href="/contact">CONTACT US</a>TODAY TO DISCUSS PRODUCTS?
+        </p>
+      </div>
+      <div class="img-container">
+        <img src="/images/icons/meet.png" alt="" />
+      </div>
+    </div>
+  </section>
+</InnerLayout>
