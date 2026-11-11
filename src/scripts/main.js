@@ -49,136 +49,212 @@ menu.addEventListener("click", () => {
   }
 });
 
+const partnerCarousel = document.querySelector(".carousel");
+const partnerGroup = document.querySelector(".carousel-group");
 
+const partnerPrev = document.querySelector(".prev");
+const partnerNext = document.querySelector(".next");
 
-const carousel = document.querySelector(".carousel");
-const group = document.querySelector(".carousel-group");
-
-const prev = document.querySelector(".prev");
-const next = document.querySelector(".next");
-
-const originalSlides = [...group.children];
+const partnerOriginalSlides = [...partnerGroup.children];
 
 // Duplicate slides
-originalSlides.forEach(slide => {
-  group.appendChild(slide.cloneNode(true));
+partnerOriginalSlides.forEach(slide => {
+  partnerGroup.appendChild(slide.cloneNode(true));
 });
 
-let slideWidth = 0;
-let totalWidth = 0;
+let partnerPosition = 0;
+let partnerTotalWidth = 0;
+let partnerSlideWidth = 0;
 
-let position = 0;
-let isHovering = false;
-let isDragging = false;
+let partnerSpeed = 0.5;
+let partnerDragging = false;
+let partnerStartX = 0;
+let partnerStartPosition = 0;
 
-let startX = 0;
-let startPosition = 0;
+let partnerLastTime = 0;
 
-let speed = 0.5;
+// Calculate width
+function calculatePartnerWidth() {
+  const firstSlide = partnerGroup.querySelector(".carousel-slide");
+  const style = getComputedStyle(firstSlide);
 
-// Calculate responsive width
-function calculateWidth() {
-  const first = group.querySelector(".carousel-slide");
-  const style = getComputedStyle(first);
-
-  slideWidth =
-    first.getBoundingClientRect().width +
+  partnerSlideWidth =
+    firstSlide.getBoundingClientRect().width +
     parseFloat(style.marginRight);
 
-  totalWidth = slideWidth * originalSlides.length;
+  partnerTotalWidth =
+    partnerSlideWidth * partnerOriginalSlides.length;
 
-  normalize();
-  render();
+  normalizePartnerPosition();
+  renderPartnerCarousel();
 }
 
-function render() {
-  group.style.transform = `translate3d(${-position}px, 0, 0)`;
+// Render
+function renderPartnerCarousel() {
+  partnerGroup.style.transform =
+    `translate3d(${-partnerPosition}px, 0, 0)`;
 }
 
-function normalize() {
-  if (!totalWidth) return;
+// Infinite loop
+function normalizePartnerPosition() {
+  if (partnerTotalWidth <= 0) return;
 
-  position = ((position % totalWidth) + totalWidth) % totalWidth;
+  partnerPosition =
+    ((partnerPosition % partnerTotalWidth) +
+      partnerTotalWidth) % partnerTotalWidth;
 }
 
-function animate() {
-  if (!isHovering && !isDragging && totalWidth > 0) {
-    position += speed;
-    normalize();
-    render();
+// Auto spin
+function animatePartnerCarousel(timestamp) {
+  if (!partnerLastTime) partnerLastTime = timestamp;
+
+  const delta = Math.min(timestamp - partnerLastTime, 50);
+  partnerLastTime = timestamp;
+
+  if (!partnerDragging && partnerTotalWidth > 0) {
+    partnerPosition += partnerSpeed * (delta / 16.67);
+
+    normalizePartnerPosition();
+    renderPartnerCarousel();
   }
 
-  requestAnimationFrame(animate);
+  requestAnimationFrame(animatePartnerCarousel);
 }
 
-// Pause on hover
-// carousel.addEventListener("mouseenter", () => {
-//   isHovering = true;
-// });
-
-carousel.addEventListener("mouseleave", () => {
-  isHovering = false;
-});
-
-// Buttons
-prev.addEventListener("click", (e) => {
-  e.stopPropagation();
-
-  position -= slideWidth;
-  normalize();
-  render();
-});
-
-next.addEventListener("click", (e) => {
-  e.stopPropagation();
-
-  position += slideWidth;
-  normalize();
-  render();
-});
-
 // Drag start
-carousel.addEventListener("pointerdown", (e) => {
+partnerCarousel.addEventListener("pointerdown", e => {
   if (e.target.closest("button")) return;
 
-  isDragging = true;
+  partnerDragging = true;
+  partnerStartX = e.clientX;
+  partnerStartPosition = partnerPosition;
 
-  startX = e.clientX;
-  startPosition = position;
-
-  carousel.setPointerCapture(e.pointerId);
+  partnerCarousel.setPointerCapture(e.pointerId);
 });
 
-// Drag move
-carousel.addEventListener("pointermove", (e) => {
-  if (!isDragging) return;
+// Drag movement
+partnerCarousel.addEventListener("pointermove", e => {
+  if (!partnerDragging) return;
 
-  const movement = startX - e.clientX;
+  const distance = e.clientX - partnerStartX;
 
-  position = startPosition + movement;
+  partnerPosition = partnerStartPosition - distance;
 
-  normalize();
-  render();
+  normalizePartnerPosition();
+  renderPartnerCarousel();
 });
 
 // Drag end
-function stopDrag() {
-  if (!isDragging) return;
-
-  isDragging = false;
+function stopPartnerDragging() {
+  partnerDragging = false;
 }
 
-carousel.addEventListener("pointerup", stopDrag);
-carousel.addEventListener("pointercancel", stopDrag);
-carousel.addEventListener("lostpointercapture", stopDrag);
+partnerCarousel.addEventListener("pointerup", stopPartnerDragging);
+partnerCarousel.addEventListener("pointercancel", stopPartnerDragging);
+partnerCarousel.addEventListener("lostpointercapture", stopPartnerDragging);
 
-// Responsive
-const resizeObserver = new ResizeObserver(() => {
-  calculateWidth();
+// Buttons
+partnerNext.addEventListener("click", () => {
+  partnerPosition += partnerSlideWidth;
+  normalizePartnerPosition();
+  renderPartnerCarousel();
 });
 
-resizeObserver.observe(carousel);
+partnerPrev.addEventListener("click", () => {
+  partnerPosition -= partnerSlideWidth;
+  normalizePartnerPosition();
+  renderPartnerCarousel();
+});
+
+// Responsive
+const partnerResizeObserver = new ResizeObserver(() => {
+  calculatePartnerWidth();
+});
+
+partnerResizeObserver.observe(partnerCarousel);
 
 // Initialize
-calculateWidth();
-animate();
+calculatePartnerWidth();
+requestAnimationFrame(animatePartnerCarousel);
+
+
+
+
+const slider = document.querySelector(".slider");
+const container = document.querySelector(".home .container");
+
+const nextBtn = document.querySelector(".slider-next");
+const prevBtn = document.querySelector(".slider-prev");
+
+const slides = [...slider.children];
+const totalSlides = slides.length;
+
+let index = 1;
+let slideWidth = container.clientWidth;
+let autoPlay;
+
+// Duplicate first and last slides
+slider.prepend(slides[totalSlides - 1].cloneNode(true));
+slider.append(slides[0].cloneNode(true));
+
+function updateSlider(transition = true) {
+  slider.style.transition = transition
+    ? "transform 0.6s ease-in-out"
+    : "none";
+
+  slider.style.transform =
+    `translateX(${-index * slideWidth}px)`;
+}
+
+function nextSlide() {
+  index++;
+  updateSlider();
+}
+
+function prevSlide() {
+  index--;
+  updateSlider();
+}
+
+// Infinite loop
+slider.addEventListener("transitionend", () => {
+  if (index === totalSlides + 1) {
+    index = 1;
+    updateSlider(false);
+  }
+
+  if (index === 0) {
+    index = totalSlides;
+    updateSlider(false);
+  }
+});
+
+// Buttons
+nextBtn.addEventListener("click", () => {
+  nextSlide();
+  startAutoPlay();
+});
+
+prevBtn.addEventListener("click", () => {
+  prevSlide();
+  startAutoPlay();
+});
+
+// Automatic sliding
+function startAutoPlay() {
+  clearInterval(autoPlay);
+
+  autoPlay = setInterval(() => {
+    nextSlide();
+  }, 5000);
+}
+
+// Responsive
+window.addEventListener("resize", () => {
+  slideWidth = container.clientWidth;
+  updateSlider(false);
+});
+
+// Initialize
+updateSlider(false);
+startAutoPlay();
