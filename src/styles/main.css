@@ -925,6 +925,7 @@ footer {
 @media (min-width: 901px) {
   .menu-links {
     display: none;
+    visibility:hidden;
   }
   .drop-links {
     display: none;

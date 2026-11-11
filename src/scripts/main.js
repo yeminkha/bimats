@@ -91,19 +91,16 @@ function calculateWidth() {
   render();
 }
 
-// Render
 function render() {
   group.style.transform = `translate3d(${-position}px, 0, 0)`;
 }
 
-// Infinite loop
 function normalize() {
   if (!totalWidth) return;
 
   position = ((position % totalWidth) + totalWidth) % totalWidth;
 }
 
-// Auto scroll
 function animate() {
   if (!isHovering && !isDragging && totalWidth > 0) {
     position += speed;
@@ -115,9 +112,9 @@ function animate() {
 }
 
 // Pause on hover
-carousel.addEventListener("mouseenter", () => {
-  isHovering = true;
-});
+// carousel.addEventListener("mouseenter", () => {
+//   isHovering = true;
+// });
 
 carousel.addEventListener("mouseleave", () => {
   isHovering = false;
